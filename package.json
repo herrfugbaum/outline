@@ -1,0 +1,21 @@
+{
+  "name": "outline",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@mdx-js/runtime": "^0.16.6",
+    "@nivo/calendar": "^0.52.0",
+    "brace": "^0.11.1",
+    "next": "^7.0.2",
+    "react": "^16.7.0",
+    "react-ace": "^6.3.2",
+    "react-dom": "^16.7.0",
+    "react-markdown": "^4.0.4"
+  }
+}
