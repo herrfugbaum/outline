@@ -56,8 +56,11 @@ class Index extends React.Component {
   }
   render() {
     const code = this.state.code
-    const options = {
-      selectOnLineNumbers: true,
+    const editorOptions = {
+      fontSize: 16,
+      tabSize: 2,
+      mode: 'markdown',
+      theme: 'github',
     }
     return (
       <div style={{ height: '100vh' }}>
@@ -71,13 +74,10 @@ class Index extends React.Component {
               Editor <button>Fullscreen</button>
             </div>
             <Editor
-              mode="markdown"
-              theme="github"
+              {...editorOptions}
               onChange={this.onEditorInput}
               value={code}
               style={{ height: '100%' }}
-              fontSize={16}
-              tabSize={2}
               focus
             />
           </div>
