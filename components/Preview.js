@@ -1,14 +1,31 @@
-import MDX from '../components/MDX'
+import React from 'react'
+import MDX from './MDX'
 
-import {ResponsiveCalendar} from '@nivo/calendar'
+import { ResponsiveCalendar } from '@nivo/calendar'
 
 const scope = {
-  Demo: props => <h1>This is a demo component{console.log(props)}</h1>,
-  Calendar: props => <div style={{height: '700px', minWidth: '700px'}}><ResponsiveCalendar {...props}/></div>
+  Demo: props => <h1>This is a demo component</h1>,
+  Calendar: props => (
+    <div style={{ height: '700px', minWidth: '700px' }}>
+      <ResponsiveCalendar {...props} />
+    </div>
+  ),
 }
 
-const Preview = (props) => (  
-  <MDX scope={scope}>{props.content}</MDX>
-)
+class Preview extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  /*   componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps, prevState)
 
+  } */
+  render() {
+    return (
+      <MDX key="preview" scope={scope}>
+        {this.props.content}
+      </MDX>
+    )
+  }
+}
 export default Preview
