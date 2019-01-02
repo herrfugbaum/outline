@@ -11,34 +11,38 @@ export default ({
   children,
   ...props
 }) => {
-  const fullScope = {
-    MDXTag,
-    components,
-    props,
-    ...scope,
+  try {
+    const fullScope = {
+      MDXTag,
+      components,
+      props,
+      ...scope,
+    }
+
+    const jsx = mdx
+      .sync(children, {
+        mdPlugins,
+        hastPlugins,
+        skipExport: true,
+      })
+      .trim()
+
+    const { code } = transform(jsx)
+    const keys = Object.keys(fullScope)
+    const values = Object.values(fullScope)
+    // eslint-disable-next-line no-new-func
+    const fn = new Function(
+      '_fn',
+      'React',
+      ...keys,
+      `${code}
+
+    return React.createElement(MDXContent, { components, ...props });`,
+    )
+
+    return fn({}, React, ...values)
+  } catch (error) {
+    // ToDo: show the last working state instead of the error message below
+    return <div>No live preview while typing JSX yet :/</div>
   }
-
-  const jsx = mdx
-    .sync(children, {
-      mdPlugins,
-      hastPlugins,
-      skipExport: true,
-    })
-    .trim()
-
-  const { code } = transform(jsx)
-
-  const keys = Object.keys(fullScope)
-  const values = Object.values(fullScope)
-  // eslint-disable-next-line no-new-func
-  const fn = new Function(
-    '_fn',
-    'React',
-    ...keys,
-    `${code}
-
-  return React.createElement(MDXContent, { components, ...props });`,
-  )
-
-  return fn({}, React, ...values)
 }
