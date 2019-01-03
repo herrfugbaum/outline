@@ -40,7 +40,7 @@ class Index extends React.Component {
     this.countCharacters = this.countCharacters.bind(this)
   }
   countWords(code) {
-    const wc = code.split(' ').length
+    const wc = code.split(' ').filter(n => n !== '').length
     this.setState({ wordCount: wc })
   }
   countCharacters(code) {
