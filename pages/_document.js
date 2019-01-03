@@ -31,6 +31,10 @@ export default class MyDocument extends Document {
               }
             `}
           </style>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.min.css"
+          />
         </Head>
         <body>
           <Main />
