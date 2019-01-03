@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mapbox/rehype-prism": "^0.3.0",
     "@mdx-js/runtime": "^0.16.6",
     "@nivo/calendar": "^0.52.0",
     "brace": "^0.11.1",
@@ -16,7 +17,10 @@
     "react": "^16.7.0",
     "react-ace": "^6.3.2",
     "react-dom": "^16.7.0",
-    "react-markdown": "^4.0.4"
+    "react-markdown": "^4.0.4",
+    "rehype-sanitize": "^2.0.2",
+    "remark-autolink-headings": "^5.1.0",
+    "remark-slug": "^5.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
